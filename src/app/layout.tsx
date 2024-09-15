@@ -1,21 +1,19 @@
-"use client";
-import "jsvectormap/dist/jsvectormap.css";
-import "flatpickr/dist/flatpickr.min.css";
-import "@/css/style.css";
-import React, { useEffect, useState } from "react";
-import Loader from "@/components/common/Loader";
+"use client"
 
-import * as Ably from "ably";
-import { AblyProvider, ChannelProvider } from "ably/react";
-import { SessionProvider } from "next-auth/react";
-import { UserProvider } from "@/app/context/UserContext";
+import { useEffect, useState } from 'react';
+import Script from 'next/script';
+import Loader from '@/components/common/Loader';
+import * as Ably from 'ably';
+import { AblyProvider, ChannelProvider } from 'ably/react';
+import { SessionProvider } from 'next-auth/react';
+import { UserProvider } from '@/app/context/UserContext';
+import '@/css/style.css'; // Import your global styles
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
-  const [sidebarOpen, setSidebarOpen] = useState(false);
+}) {
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
@@ -25,16 +23,22 @@ export default function RootLayout({
   const client = new Ably.Realtime({
     key: "xiEQTw.SBJKWA:Kv7RDv6PngxN8y8ttHsOWHDQqchaEYtU9rgKefhsl7o",
   });
+
   return (
     <html lang="en">
-      {/* <script src="https://unpkg.com/@rdkit/rdkit/dist/RDKit_minimal.js"></script> */}
-      <script src="https://unpkg.com/@rdkit/rdkit/dist/RDKit_minimal.js"></script>
+      <head>
+        {/* Add your global scripts and meta tags here */}
+        <Script
+          src="https://unpkg.com/@rdkit/rdkit/dist/RDKit_minimal.js"
+          strategy="beforeInteractive"
+        />
+      </head>
       <body suppressHydrationWarning={true}>
         <SessionProvider>
           <UserProvider>
             <AblyProvider client={client}>
               <ChannelProvider channelName="chat-demo1">
-                <div className="font-poppins dark:bg-boxdark-2 dark:text-bodydark ">
+                <div className="font-poppins dark:bg-boxdark-2 dark:text-bodydark">
                   {loading ? <Loader /> : children}
                 </div>
               </ChannelProvider>

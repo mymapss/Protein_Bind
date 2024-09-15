@@ -4,7 +4,7 @@ import DefaultLayout from "@/components/Layouts/DefaultLayout";
 
 export const metadata: Metadata = {
   title:
-    "Next.js E-commerce Dashboard | TailAdmin - Next.js Dashboard Template",
+    "Protein Bind | Drug discovery and Protein-binding prediction tool",
   description: "This is Next.js Home for TailAdmin Dashboard Template",
 };
 

@@ -1,16 +1,30 @@
-import React from "react";
+// src/app/ui/modals/page.tsx
+import React from 'react';
 
-const Modal: React.FC<ModalProps> = ({ id, title, content, onCloseText }) => {
+interface ModalProps {
+  id: string;
+  title: string;
+  content: React.ReactNode;
+  isOpen: boolean;
+  onClose: () => void;
+  onCloseText?: string;
+}
+
+const Modal: React.FC<ModalProps> = ({ id, title, content, isOpen, onClose, onCloseText = "Close" }) => {
+  if (!isOpen) return null;
+
   return (
-    <dialog id={id} className="modal">
-      <div className="modal-box bg-[#ffffff] text-black dark:bg-[#181818] dark:text-white">
-        <h3 className="text-lg font-bold">{title}</h3>
-        <div className="py-4">{content}</div>
-        <div className="modal-action">
-          <form method="dialog"></form>
+    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+      <div className="bg-white dark:bg-[#181818] p-6 rounded-lg shadow-lg">
+        <div className="flex justify-between items-center mb-4">
+          <h3 className="text-xl font-semibold">{title}</h3>
+          <button onClick={onClose} className="text-gray-600 dark:text-gray-300">
+            {onCloseText}
+          </button>
         </div>
+        <div>{content}</div>
       </div>
-    </dialog>
+    </div>
   );
 };
 

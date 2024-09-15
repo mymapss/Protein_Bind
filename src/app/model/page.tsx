@@ -46,13 +46,11 @@ const ModalLayout = () => {
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     setLoading(true);
-
-    const API_KEY =
-      "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";
-
-    const invokeUrl =
-      "https://health.api.nvidia.com/v1/biology/nvidia/molmim/generate";
-
+  
+    // You no longer need the API_KEY here
+    // const API_KEY = "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";
+    // const invokeUrl = "https://health.api.nvidia.com/v1/biology/nvidia/molmim/generate";
+  
     const payload = {
       algorithm: "CMA-ES",
       num_molecules: parseInt(numMolecules),
@@ -63,26 +61,24 @@ const ModalLayout = () => {
       iterations: parseInt(iterations),
       smi: smiles,
     };
-
+  
     try {
-      const response = await fetch(invokeUrl, {
+      const response = await fetch("/api/proxy", {  // Updated URL
         method: "POST",
         headers: {
-          Authorization: `Bearer ${API_KEY}`,
-          Accept: "application/json",
           "Content-Type": "application/json",
         },
         body: JSON.stringify(payload),
       });
-
+  
       const data = await response.json();
       const generatedMolecules = JSON.parse(data.molecules).map((mol: any) => ({
         structure: mol.sample,
         score: mol.score,
       }));
-
+  
       setMolecules(generatedMolecules);
-
+  
       if (userId) {
         await createMoleculeGenerationHistory(
           {
@@ -95,13 +91,13 @@ const ModalLayout = () => {
           },
           userId,
         );
-
+  
         const updatedHistory = await getMoleculeGenerationHistoryByUser(userId);
         setHistory(updatedHistory);
       } else {
         console.error("User ID is not available.");
       }
-
+  
       console.log(generatedMolecules);
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -109,6 +105,7 @@ const ModalLayout = () => {
       setLoading(false);
     }
   };
+  
 
   return (
     <DefaultLayout>
