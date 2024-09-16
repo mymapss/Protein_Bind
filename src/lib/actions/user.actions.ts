@@ -6,6 +6,7 @@ import User from "../database/models/user.model";
 import { connectToDatabase } from "../database/mongoose";
 import { handleError } from "../utils";
 import { sendVerificationEmail, sendResetPasswordEmail } from "./email.actions";
+import { CreateUserParams, UpdateUserParams } from "@/types";
 
 export async function createUser(user: CreateUserParams) {
   try {
@@ -57,6 +58,9 @@ export async function loginUser(email: string, password: string) {
     handleError(error);
   }
 }
+
+// ... other functions (verifyEmail, requestPasswordReset, etc.) should be async as well
+
 
 export async function verifyEmail(token: string) {
   try {

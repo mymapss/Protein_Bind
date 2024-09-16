@@ -3,7 +3,7 @@ import fetch from 'node-fetch';
 
 export async function POST(request) {
   const url = 'https://health.api.nvidia.com/v1/biology/nvidia/molmim/generate';
-  const API_KEY = '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'; // Store your API key securely
+  const API_KEY = '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'; // Store your API key securely
 
   const payload = await request.json();
 

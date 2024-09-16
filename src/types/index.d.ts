@@ -1,3 +1,5 @@
+import React from "react";
+
 declare type MoleculeStructure = {
   structure: string;
   score: number;

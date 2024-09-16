@@ -1,11 +1,10 @@
-"use server";
-
-import { revalidatePath } from "next/cache";
-import MoleculeGenerationHistory from "../database/models/molecule-generation.model";
 import { connectToDatabase } from "../database/mongoose";
 import { handleError } from "../utils";
 import mongoose from "mongoose";
+import MoleculeGenerationHistory from "../database/models/molecule-generation.model";
+import { MoleculeGenerationHistoryType } from "@/types";
 
+// Convert the function to async
 export async function createMoleculeGenerationHistory(
   payload: MoleculeGenerationHistoryType,
   userId: string,
@@ -25,6 +24,7 @@ export async function createMoleculeGenerationHistory(
   }
 }
 
+// Similarly update the other functions
 export async function getMoleculeGenerationHistoryByUser(userId: string) {
   try {
     await connectToDatabase();

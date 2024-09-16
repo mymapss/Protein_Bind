@@ -13,6 +13,7 @@ import {
 } from "@/lib/actions/group.actions";
 import { getUserByEmail } from "@/lib/actions/user.actions";
 import { useSession } from "next-auth/react";
+import Image from "next/image";
 
 function ChatBox() {
   const ably = useAbly();
@@ -118,7 +119,7 @@ function ChatBox() {
           }`}
         >
           <div className="mb-2 flex items-center">
-            <img
+            <Image
               src={message.image || "/default-avatar.png"}
               alt={message.name}
               className="mr-2 h-8 w-8 rounded-full"

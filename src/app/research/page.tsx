@@ -3,6 +3,8 @@ import DefaultLayout from "@/components/Layouts/DefaultLayout";
 import MoleculeStructure from "@/components/MoleculeStructure";
 import { useState } from "react";
 import { Search } from "lucide-react";
+import React from "react";
+import { CompoundData } from "@/types";
 
 export default function PubChem() {
   const [compoundName, setCompoundName] = useState("");

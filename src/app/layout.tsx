@@ -1,12 +1,13 @@
 "use client"
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState} from 'react';
 import Script from 'next/script';
 import Loader from '@/components/common/Loader';
 import * as Ably from 'ably';
 import { AblyProvider, ChannelProvider } from 'ably/react';
 import { SessionProvider } from 'next-auth/react';
 import { UserProvider } from '@/app/context/UserContext';
+import React from 'react';
 import '@/css/style.css'; // Import your global styles
 
 export default function RootLayout({

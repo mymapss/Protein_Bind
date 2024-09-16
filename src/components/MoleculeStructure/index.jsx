@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import _ from "lodash";
 import PropTypes from "prop-types";
 import initRDKitModule from "@rdkit/rdkit";
+import { Promise } from "mongoose";
 
 const initRDKit = (() => {
   let rdkitLoadingPromise;

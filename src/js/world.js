@@ -1,3 +1,5 @@
+import jsVectorMap from 'jsvectormap'; // Adjust the import path based on the library documentation
+
 jsVectorMap.addMap("world", {
   insets: [
     {

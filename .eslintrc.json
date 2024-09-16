@@ -1,0 +1,36 @@
+{
+  "extends": ["next", "next/core-web-vitals"],
+  "rules": {
+    // Existing rules
+    "import/no-unresolved": ["error", { "ignore": ["^@/"] }],
+    "no-unused-vars": "warn",
+    "no-undef": "error",
+    "react/no-unescaped-entities": "warn",
+    "react-hooks/exhaustive-deps": "warn",
+
+    // Additional recommended rules
+    "react/jsx-uses-react": "error", // Ensures that React is used correctly in JSX
+    "react/jsx-uses-vars": "error", // Ensures that variables are used in JSX
+    "react/react-in-jsx-scope": "error", // Ensures that React is in scope for JSX
+    "react/self-closing-comp": "error", // Enforces self-closing components
+    "react/no-unknown-property": "error", // Prevents unknown properties on elements
+    "react/no-duplicate-props": "error", // Prevents duplicate props on elements
+    "react/valid-js-props": "error", // Ensures valid JSX props
+    "react/no-danger": "warn", // Warns about using dangerouslySetInnerHTML
+    "react/no-children-prop": "error", // Prevents the children prop on elements that don't support it
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+  
+    "compilerOptions": {
+      "baseUrl": "./",
+      "paths": {
+        "@/components/*": ["components/*"]
+      }
+    }
+  
+  
+}
